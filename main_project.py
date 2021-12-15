@@ -35,3 +35,4 @@ def vyvid (lst_board):
         else:
             print(str(index) + '  ' + line_str)
     return lst_board
+
