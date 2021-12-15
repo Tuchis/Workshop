@@ -32,6 +32,7 @@ def main():
                     New_ship_coordinate=[]
                     break
                 New_ship_coordinate.append((x_cor, y_cor))
+        
   
 def Get_field(List_of_ships_coordinate):
     import string
