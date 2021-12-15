@@ -1,16 +1,12 @@
 import string
 
-
-def generate_field():
+def board_generate():
     lst = []
     timed_lst = []
-    let_list = ['  ']
+    let_list = []
     for i in range(1, 11):
         let_list.append(string.ascii_uppercase[i - 1])
         i = str(i)
-        if len(i) < 2:
-            i = '0' + i
-        timed_lst.append(i)
         for j in range(1, 11):
             timed_lst.append('_')
         lst.append(timed_lst)
@@ -18,16 +14,18 @@ def generate_field():
     lst.insert(0, let_list)
     return lst
 
-def print_field(field):
-    for line in field:
-        print(*line)
-print_field(generate_field())
+def vyvid (lst_board):
+    for index, line in enumerate(lst_board):
+        line_str = ''
+        for item in line:
+            line_str +=item + ' '
+        if index<10:
+            print('0' + str(index)+ '  ' + line_str)
+        else:
+            print(str(index) + '  ' + line_str)
+    return lst_board
 
-def place_figures(player, field):
-    moves = 0
-    while moves < 4:
-        pass
-
-
-
-
+  first_board = board_generate()
+  user_board = board_generate()
+  vyvid(first_board)
+  vyvid(user_board)
