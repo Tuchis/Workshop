@@ -1,11 +1,12 @@
 def main():
     Place_horizontaly=True
-    Ships=[4,3,3,2,2,2,2,1,1,1,1]
+    Ships=[4,3,3,2,2,2,1,1,1,1]
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     Ships_position=[]
     while True:
         Field=Get_field(Ships_position)
         if not Ships:
-            break
+            return Field
         ship=Ships[0]
         print("Your ship:")
         print('*'*ship)
@@ -21,7 +22,7 @@ def main():
             continue
         try:
             Player_comand=Player_comand.split(' ')
-            x_cor=int(Player_comand[0])
+            x_cor=letters.index(Player_comand[0]) + 1
             y_cor=int(Player_comand[1])
         except:
             print('Wrong input')
@@ -65,4 +66,3 @@ def Get_field(List_of_ships_coordinate):
     for line in lst:
         print(*line)
     return lst
-main()
