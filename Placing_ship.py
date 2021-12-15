@@ -4,6 +4,8 @@ def main():
     Ships_position=[]
     while True:
         Field=Get_field(Ships_position)
+        if not Ships:
+            break
         ship=Ships[0]
         print("Your ship:")
         print('*'*ship)
@@ -27,12 +29,20 @@ def main():
         New_ship_coordinate=[]
         for i in range(ship):
             if Place_horizontaly:
-                if (y_cor>10)|((x_cor+ship)>10)|((x_cor, y_cor+i) in Ships_position):
+                if (y_cor>10)|((x_cor+ship)>10)|((x_cor+i, y_cor) in Ships_position):
                     print("You can not place ship here")
                     New_ship_coordinate=[]
                     break
-                New_ship_coordinate.append((x_cor, y_cor))
-        
+                New_ship_coordinate.append((x_cor+i, y_cor))
+            else:
+                if (y_cor+ship>10)|((x_cor)>10)|((x_cor, y_cor+i) in Ships_position):
+                    print("You can not place ship here")
+                    New_ship_coordinate=[]
+                    break
+                New_ship_coordinate.append((x_cor, y_cor+i))
+        if New_ship_coordinate:
+            Ships_position.extend(New_ship_coordinate)
+            Ships.pop(0)
   
 def Get_field(List_of_ships_coordinate):
     import string
