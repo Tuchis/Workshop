@@ -27,4 +27,20 @@ def board_generate():
 
 print(board_generate())
 
+first_board = board_generate()
+user_board = board_generate()
+
+
+def vyvid (lst_board):
+    for index, line in enumerate(lst_board):
+        line_str = ''
+        for item in line:
+            line_str +=item + ' '
+        if index<10:
+            print('0' + str(index)+ '  ' + line_str)
+        else:
+            print(str(index) + '  ' + line_str)
+    return lst_board
+
+vyvid(board_generate())
 
