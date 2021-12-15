@@ -48,6 +48,25 @@ def print_field(field):
         print(*line)
 print_field(generate_field())
 
+def shooting(field, cord):
+    letters = ' ABCDEFGHIJ'
+    while boat_in:
+        if field[cord[2]][letters.find(cord[1])] == '*':
+            boat_in = True
+            print('Bingo!')
+            field[cord[2]][letters.find(cord[1])] = 'X'
+            #need to input new cord here
+            letter_input = input('Print coordinates letter')
+            number_input = int(input('Print coordinates number'))
+            cord = (letter_input, number_input)
+        elif field[cord[2]][letters.find(cord[1])] == '_':
+            boat_in = False
+            print('No boat here')
+        else:
+            print("You've already used this coordinates")
+            continue
+    return field
+
 def place_figures(player, field):
     moves = 0
     while moves < 4:
