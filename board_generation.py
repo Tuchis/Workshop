@@ -3,7 +3,7 @@ import string
 def board_generate():
     lst = []
     timed_lst = []
-    let_list = ['  ']
+    let_list = []
     for i in range(1, 11):
         let_list.append(string.ascii_uppercase[i - 1])
         i = str(i)
@@ -20,7 +20,11 @@ def board_generate():
         for item in line:
             line_str +=item + ' '
         if index<10:
-            print('0' + str(index)+ ' ' + line_str)
+            print('0' + str(index)+ '  ' + line_str)
         else:
-            print(str(index) + ' ' + line_str)
-board_generate()
+            print(str(index) + '  ' + line_str)
+    return lst
+
+print(board_generate())
+
+
