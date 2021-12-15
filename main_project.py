@@ -51,6 +51,8 @@ def main():
         else:
             print("Vertical")
         Player_comand=input()
+        if Player_comand in ['quit', 'Quit', 'Exit', 'exit', 'вийти', 'Вийти']:
+            return
         if Player_comand=='0':
             print("Mode changed")
             Place_horizontaly=not Place_horizontaly
