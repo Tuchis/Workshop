@@ -2,6 +2,11 @@ import string
 import sys
 
 def generate_field():
+    r"""
+    The function to generate the play field
+    >>> generate_field() #doctest +EPSILLON
+    '[['  ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']...'
+    """
     lst = []
     timed_lst = []
     let_list = ['  ']
@@ -20,11 +25,17 @@ def generate_field():
 
 
 def print_field(field):
+    """
+    Printing of the field
+    """
     for line in field:
         print(*line)
 
 
 def place_figures(player, field):
+    """
+    The finction to place figures
+    """
     print("You're player", player)
     figures = ['****', '***', '**', '*']
     moves = 0
@@ -50,6 +61,9 @@ def place_figures(player, field):
 
 
 def shooting(field, cord):
+    """
+    The function that "shoots".
+    """
     letters = ' ABCDEFGHIJ'
     boat_in = True
     while boat_in:
@@ -88,6 +102,9 @@ def win_checker(field):
 
 print()
 def cord_asker():
+    """
+    The function that asks for coordinates for input
+    """
     print('You have to make a move. If you want to leave the game, enter exit')
     column = 0
     row = 'a'
@@ -126,12 +143,24 @@ def main():
         print(player2_name, ", it's your turn to attack!")
         timed_lst_pl1 = []
         field_for_output_player2 = []
-        for i in player1_field:
-            field_for_output_player2.append(i.replace('*', '_'))
+        for i in range(1, len(player1_field)):
+            field_for_output_player2.append([])
+            for elem in range(1, len(player1_field[i])):
+                if player1_field[i][elem] == "*":
+                    field_for_output_player2[i-1].append("_")
+                else:
+                    field_for_output_player2[i-1].append(player2_field[i][elem])
         timed_lst_pl2 = []
         field_for_output_player1 = []
-        for i in player2_field:
-            field_for_output_player1.append(i.replace('*', '_'))
+        for i in range(1, len(player2_field)):
+            field_for_output_player1.append([])
+            for elem in range(1, len(player2_field[i])):
+                if player2_field[i][elem] == "*":
+                    field_for_output_player1[i-1].append("_")
+                else:
+                    field_for_output_player1[i-1].append(player2_field[i][elem])
+        # for i in player2_field:
+        #     field_for_output_player1.append(i.replace('*', '_'))
         player2_field = shooting(player2_field, player1_attack)
         print(player1_name,  "it's your turn to attack!")
         print('Your opponents field looks like this:')
